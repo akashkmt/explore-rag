@@ -4,10 +4,11 @@ A small ingestion pipeline that builds a resource dataset from web links, summar
 
 ## What it does
 
-This project runs in two stages for testing with local `sources.json`:
+This project runs in three stages for testing with local `sources.json`:
 
 1. Scrape each resource URL from `sources.json` and store raw HTML + dataset metadata under `dataset/`.
 2. Generate a summary for each page and upsert it into Upstash Vector.
+3. Query the vector index for relevant resources.
 
 ## Installation
 
@@ -41,12 +42,16 @@ pnpm generate-dataset
 
 # 2) Summarize page content and upsert into Upstash Vector
 pnpm generate-summary
+
+# 3) Query vectors (pass your search text)
+pnpm query-vectors "react authentication guide"
 ```
 
 ## Scripts
 
 - `pnpm generate-dataset` -> runs `tsx generateDataset.ts`
 - `pnpm generate-summary` -> runs `tsx generateSummary.ts`
+- `pnpm query-vectors "<your query>"` -> runs `tsx queryVectors.ts`
 
 ## Data outputs
 
@@ -60,3 +65,4 @@ pnpm generate-summary
 - For this testing flow, keep your links in `sources.json`; `generate-sources` is not required.
 - Some URLs may fail to scrape; those entries are still kept with metadata-only fallback.
 - Summarization handles Gemini 429 rate limits by waiting and retrying.
+- Optional: set `TOP_K` in `.env` to control how many query matches are returned (default `5`).

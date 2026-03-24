@@ -6,7 +6,8 @@
   "scripts": {
     "generate-sources": "tsx generateSources.ts",
     "generate-dataset": "tsx generateDataset.ts",
-    "generate-summary": "tsx generateSummary.ts"
+    "generate-summary": "tsx generateSummary.ts",
+    "query-vectors": "tsx queryVectors.ts"
   },
   "repository": {
     "type": "git",
