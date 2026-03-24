@@ -1,0 +1,33 @@
+{
+  "name": "explore-rag",
+  "version": "1.0.0",
+  "description": "1. build a config 2. Scrape the web for config data 3. Generate the details and then generate summary for these dataset for creating vectors 4. push the vectors 5. query the vectors",
+  "main": "index.js",
+  "scripts": {
+    "generate-sources": "tsx generateSources.ts",
+    "generate-dataset": "tsx generateDataset.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akashkmt/explore-rag.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/akashkmt/explore-rag/issues"
+  },
+  "homepage": "https://github.com/akashkmt/explore-rag#readme",
+  "devDependencies": {
+    "dotenv": "^17.3.1",
+    "tsx": "^4.21.0"
+  },
+  "dependencies": {
+    "axios": "^1.13.6",
+    "p-limit": "^7.3.0",
+    "puppeteer": "^24.40.0",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2"
+  }
+}

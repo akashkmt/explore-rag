@@ -1,0 +1,14 @@
+[
+    {
+        "id": "react",
+        "name": "React",
+        "url": "https://react.dev/",
+        "category": "Programming > React"
+    },
+    {
+        "id": "nextjs",
+        "name": "Next.js",
+        "url": "https://nextjs.org/",
+        "category": "Programming > Next.js"
+    }
+]
