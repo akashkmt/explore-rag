@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "generate-sources": "tsx generateSources.ts",
-    "generate-dataset": "tsx generateDataset.ts"
+    "generate-dataset": "tsx generateDataset.ts",
+    "generate-summary": "tsx generateSummary.ts"
   },
   "repository": {
     "type": "git",
@@ -14,7 +15,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/akashkmt/explore-rag/issues"
   },
@@ -24,6 +25,8 @@
     "tsx": "^4.21.0"
   },
   "dependencies": {
+    "@google/genai": "^1.46.0",
+    "@upstash/vector": "^1.2.3",
     "axios": "^1.13.6",
     "p-limit": "^7.3.0",
     "puppeteer": "^24.40.0",

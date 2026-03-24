@@ -1,6 +1,6 @@
 import fs from "fs";
 import pLimit from "p-limit";
-import puppeteer from "puppeteer";
+import puppeteer from "puppeteer-extra";
 import StealthPlugin from "puppeteer-extra-plugin-stealth";
 import { Browser } from "puppeteer";
 
@@ -34,15 +34,12 @@ const getPageContent = async (browser: Browser, url: string) => {
 const main = async () => {
   fs.mkdirSync("./dataset/pageContent", { recursive: true });
 
-  const resourcesFile = fs.existsSync("resources.json")
-    ? "resources.json"
-    : "sources.json";
-  const resourcesJson = fs.readFileSync(resourcesFile, "utf8");
+  const resourcesJson = fs.readFileSync("sources.json", "utf8");
   const resources = JSON.parse(resourcesJson) as Resource[];
   console.log(`Found ${resources.length} resources to scrape.`);
 
   const limit = pLimit(10);
-  const browser = await (puppeteer as any).use(StealthPlugin()).launch();
+  const browser = await puppeteer.use(StealthPlugin()).launch();
   const dataset: DatasetItem[] = [];
 
   const promises = resources.map((resource, i) =>
