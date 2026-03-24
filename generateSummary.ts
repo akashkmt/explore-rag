@@ -3,6 +3,11 @@ import { Index } from "@upstash/vector";
 import fs from "node:fs/promises";
 import dotenv from "dotenv";
 
+const index = new Index({
+  url: process.env.UPSTASH_VECTOR_REST_URL,
+  token: process.env.UPSTASH_VECTOR_REST_TOKEN,
+});
+
 dotenv.config();
 
 type FlatResource = {
@@ -33,11 +38,6 @@ const main = async () => {
   const data = await fs.readFile("./dataset/index.json", "utf-8");
   const pages = JSON.parse(data) as DatasetItem[];
   console.log("Pages count:", pages.length);
-
-  const index = new Index({
-    url: process.env.UPSTASH_VECTOR_REST_URL!,
-    token: process.env.UPSTASH_VECTOR_REST_TOKEN!,
-  });
 
   for (let i = 0; i < pages.length; i++) {
     const page = pages[i];
